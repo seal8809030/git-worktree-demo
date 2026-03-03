@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { NAV_LINKS, BRAND } from '../data/navigation';
+import ThemeToggle from './ThemeToggle';
 
 function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -12,17 +13,20 @@ function Navbar() {
                     <span className="navbar__brand-name">{BRAND.name}</span>
                 </a>
 
-                <button
-                    className="navbar__toggle"
-                    onClick={() => setMenuOpen(!menuOpen)}
-                    aria-expanded={menuOpen}
-                    aria-controls="nav-menu"
-                    aria-label="切換導覽選單"
-                >
-                    <span className="navbar__toggle-bar" />
-                    <span className="navbar__toggle-bar" />
-                    <span className="navbar__toggle-bar" />
-                </button>
+                <div className="navbar__actions-mobile">
+                    <ThemeToggle />
+                    <button
+                        className="navbar__toggle"
+                        onClick={() => setMenuOpen(!menuOpen)}
+                        aria-expanded={menuOpen}
+                        aria-controls="nav-menu"
+                        aria-label="切換導覽選單"
+                    >
+                        <span className="navbar__toggle-bar" />
+                        <span className="navbar__toggle-bar" />
+                        <span className="navbar__toggle-bar" />
+                    </button>
+                </div>
 
                 <nav
                     id="nav-menu"
@@ -39,9 +43,12 @@ function Navbar() {
                             </li>
                         ))}
                     </ul>
-                    <a href="#demo" className="btn btn--primary btn--sm navbar__cta">
-                        預約 Demo
-                    </a>
+                    <div className="navbar__cta-group">
+                        <ThemeToggle />
+                        <a href="#demo" className="btn btn--primary btn--sm navbar__cta">
+                            預約 Demo
+                        </a>
+                    </div>
                 </nav>
             </div>
         </header>
